@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Tooltip?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.program.bookie.app.controllers.LoginController">
    <left>
@@ -27,6 +28,21 @@
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="-6.0" layoutY="2.0" mnemonicParsing="false"
+                    prefHeight="18.0" prefWidth="42.0"
+                    style="-fx-background-color: transparent;"
+                    focusTraversable="false">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/img/info.png"/>
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip showDelay="0ms" text="Bookie v1.0.0&#10;Aplikacja do zarządzania osobistą biblioteką książek.&#10;&#10;Projekt studencki - Semestr IV&#10;Programowanie w języku Java&#10;&#10;Autorki:&#10;Julia Chrabąszcz • Anna Raputa&#10;&#10;© 2025 - Wszelkie prawa zastrzeżone" style="-fx-font-size: 12px;"/>
+               </tooltip>
             </Button>
          </children>
       </AnchorPane>
