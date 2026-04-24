@@ -47,6 +47,12 @@ public class LoginController implements Initializable {
             loginMessageLabel.setText("Cannot connect to server");
         }
 
+        enterPasswordField.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                loginButtonOnAction(null);
+            }
+        });
+
     }
 
     public void loginButtonOnAction(ActionEvent event) {

@@ -34,8 +34,6 @@ import java.util.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.stream.Collectors;
-import javafx.util.Duration;
-
 
 
 public class MainController implements Initializable {
@@ -125,35 +123,35 @@ public class MainController implements Initializable {
 
     @FXML
     private void scrollCurrentlyReadingLeft() {
-        scrollHorizontally(currentlyReadingScrollPane, -200);
+        scrollHorizontally(currentlyReadingScrollPane, -215);
         updateScrollButtons(currentlyReadingScrollPane, currentlyReadingLeftButton, currentlyReadingRightButton);
     }
 
     @FXML
     private void scrollCurrentlyReadingRight() {
-        scrollHorizontally(currentlyReadingScrollPane, 200);
+        scrollHorizontally(currentlyReadingScrollPane, 215);
         updateScrollButtons(currentlyReadingScrollPane, currentlyReadingLeftButton, currentlyReadingRightButton);
     }
     @FXML
     private void scrollWantToReadLeft() {
-        scrollHorizontally(wantToReadScrollPane, -200);
+        scrollHorizontally(wantToReadScrollPane, -215);
         updateScrollButtons(wantToReadScrollPane, wantToReadLeftButton, wantToReadRightButton);
     }
 
     @FXML
     private void scrollWantToReadRight() {
-        scrollHorizontally(wantToReadScrollPane, 200);
+        scrollHorizontally(wantToReadScrollPane, 215);
         updateScrollButtons(wantToReadScrollPane, wantToReadLeftButton, wantToReadRightButton);
     }
     @FXML
     private void scrollReadLeft() {
-        scrollHorizontally(readScrollPane, -200);
+        scrollHorizontally(readScrollPane, -215);
         updateScrollButtons(readScrollPane, readLeftButton, readRightButton);
     }
 
     @FXML
     private void scrollReadRight() {
-        scrollHorizontally(readScrollPane, 200);
+        scrollHorizontally(readScrollPane, 215);
         updateScrollButtons(readScrollPane, readLeftButton, readRightButton);
     }
 
@@ -222,6 +220,14 @@ public class MainController implements Initializable {
             searchField.setOnMouseClicked(event -> {
                 if (isUserMenuVisible) {
                     hideUserMenu();
+                }
+                if (isNotificationMenuVisible) {
+                    hideNotificationMenu();
+                }
+            });
+            searchField.setOnKeyPressed(event -> {
+                if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                    onSearchClicked();
                 }
             });
         }
@@ -620,7 +626,7 @@ public class MainController implements Initializable {
 
         for (Book book : books) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/program/bookie/searchBokk.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/program/bookie/searchBook.fxml"));
                 HBox searchResult = loader.load();
 
                 SearchController controller = loader.getController();
@@ -672,7 +678,7 @@ public class MainController implements Initializable {
         // Dodaj pojedynczy wynik
         Platform.runLater(() -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/program/bookie/searchBokk.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/program/bookie/searchBook.fxml"));
                 HBox searchResult = loader.load();
 
                 SearchController controller = loader.getController();
@@ -938,6 +944,7 @@ public class MainController implements Initializable {
                 ReviewItemController controller = loader.getController();
                 controller.setReviewData(review, currentUser.getUsername());
 
+                VBox.setMargin(reviewItem, new Insets(0, 0, 15, 0));
                 reviewsContainer.getChildren().add(reviewItem);
 
             } catch (Exception e) {

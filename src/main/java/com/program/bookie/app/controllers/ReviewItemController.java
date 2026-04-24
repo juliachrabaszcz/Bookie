@@ -115,16 +115,9 @@ public class ReviewItemController implements Initializable {
     private void displayReviewData() {
         if (currentReview == null) return;
 
-        // Set username
         usernameLabel.setText(currentReview.getUsername());
-
-        // Set star rating
         displayStarRating(currentReview.getRating());
-
-        // Set dates
         displayDates();
-
-        // Handle spoiler content
         handleSpoilerContent();
     }
 
@@ -156,7 +149,6 @@ public class ReviewItemController implements Initializable {
             dateLabel.setText("Unknown date");
         }
 
-        // Show "edited" label if review was modified
         if (editedLabel != null) {
             editedLabel.setVisible(currentReview.wasEdited());
         }
